@@ -4,21 +4,27 @@ import (
 	"strconv"
 )
 
-type FizzBuzzService struct{}
-
-func NewFizzBuzzService() *FizzBuzzService {
-	return &FizzBuzzService{}
+type FizzBuzzSolver struct {
+	fizzNumber int
+	buzzNumber int
 }
 
-func (s *FizzBuzzService) FizzBuzz(n int) (*[]string, error) {
+func NewFizzBuzzSolver(fizzNumber, buzzNumber int) *FizzBuzzSolver {
+	return &FizzBuzzSolver{
+		fizzNumber: fizzNumber,
+		buzzNumber: buzzNumber,
+	}
+}
+
+func (s *FizzBuzzSolver) FizzBuzz(n int) *[]string {
 	strArr := make([]string, n)
 
 	for i := 1; i <= n; i++ {
 		output := ""
-		if i%3 == 0 {
+		if i%s.fizzNumber == 0 {
 			output += "Fizz"
 		}
-		if i%5 == 0 {
+		if i%s.buzzNumber == 0 {
 			output += "Buzz"
 		}
 		if output == "" {
@@ -27,5 +33,5 @@ func (s *FizzBuzzService) FizzBuzz(n int) (*[]string, error) {
 		strArr[i-1] = output
 	}
 
-	return &strArr, nil
+	return &strArr
 }

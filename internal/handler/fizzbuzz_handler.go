@@ -5,7 +5,7 @@ import (
 )
 
 type FizzBuzzService interface {
-	FizzBuzz(n int) (*[]string, error)
+	FizzBuzz(n int) *[]string
 }
 
 type FizzBuzzHandler struct {
@@ -28,10 +28,7 @@ func (h *FizzBuzzHandler) GetStringArr(c *fiber.Ctx) error {
 		return c.SendStatus(fiber.StatusBadRequest)
 	}
 
-	result, err := h.fizzBuzzService.FizzBuzz(requestBody.N)
-	if err != nil {
-		return c.SendStatus(fiber.StatusInternalServerError)
-	}
+	result := h.fizzBuzzService.FizzBuzz(requestBody.N)
 
 	return c.JSON(result)
 }

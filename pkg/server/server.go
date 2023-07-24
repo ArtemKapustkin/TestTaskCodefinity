@@ -11,18 +11,23 @@ type App struct {
 	app *fiber.App
 }
 
+type Config struct {
+	Address    string
+	FizzNumber int
+	BuzzNumber int
+}
+
 func NewApp() *App {
 	return &App{
 		app: fiber.New(),
 	}
 }
-func (a *App) Run() {
-	api := a.app.Group("/api")
 
-	fizzBuzzHandler := handler.NewFizzBuzzHandler(service.NewFizzBuzzService())
-	api.Post("/fizzbuzz", fizzBuzzHandler.GetStringArr)
+func (a *App) Run(cong Config) {
+	fizzBuzzHandler := handler.NewFizzBuzzHandler(service.NewFizzBuzzSolver(cong.FizzNumber, cong.BuzzNumber))
+	a.app.Post("/run", fizzBuzzHandler.GetStringArr)
 
-	if err := a.app.Listen(":5000"); err != nil {
+	if err := a.app.Listen(cong.Address); err != nil {
 		log.Fatal(err)
 	}
 }
