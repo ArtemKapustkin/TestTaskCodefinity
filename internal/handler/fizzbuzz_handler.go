@@ -18,12 +18,12 @@ func NewFizzBuzzHandler(fizzBuzzService FizzBuzzService) *FizzBuzzHandler {
 	}
 }
 
-type RequestBody struct {
+type fizzBuzzDTO struct {
 	N int `json:"n"`
 }
 
 func (h *FizzBuzzHandler) Solve(c *fiber.Ctx) error {
-	var requestBody RequestBody
+	var requestBody fizzBuzzDTO
 	if err := c.BodyParser(&requestBody); err != nil {
 		return c.SendStatus(fiber.StatusBadRequest)
 	}
