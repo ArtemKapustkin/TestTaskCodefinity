@@ -3,4 +3,6 @@ services:
   fizzbuzz:
     build: .
     ports:
-      - "5000:5000"
+      - "5000${ADDRESS}"
+    env_file:
+      - .env

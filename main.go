@@ -2,17 +2,12 @@ package main
 
 import (
 	"TestTaskCodefinity/pkg/server"
-	"github.com/joho/godotenv"
 	"log"
 	"os"
 	"strconv"
 )
 
 func main() {
-	if err := godotenv.Load(); err != nil {
-		log.Fatal("Error loading .env file")
-	}
-
 	app := server.NewApp()
 
 	fizzNumber, err := strconv.Atoi(os.Getenv("FIZZ_NUMBER"))

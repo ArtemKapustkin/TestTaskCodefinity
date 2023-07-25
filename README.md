@@ -12,12 +12,11 @@ The FizzBuzz quiz is a simple programming task that follows these rules:
 * For numbers divisible by 3, replace the number with "Fizz".
 * For numbers divisible by 5, replace the number with "Buzz".
 * For numbers divisible by both 3 and 5, replace the number with "FizzBuzz".
-* For other numbers, keep the number as is.
+* For other numbers, the original number remains unchanged.
 
 ## Usage
 
-You can run server locally using `go run main.go` command in your terminal.
-Or you also can easily run this project using `docker compose up`, which simplifies the setup process.
+Yot can easily run this project using `docker compose up`, which simplifies the setup process.
 
 ## API Endpoint
 

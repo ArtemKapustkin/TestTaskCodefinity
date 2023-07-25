@@ -23,11 +23,11 @@ func NewApp() *App {
 	}
 }
 
-func (a *App) Run(cong Config) {
-	fizzBuzzHandler := handler.NewFizzBuzzHandler(service.NewFizzBuzzSolver(cong.FizzNumber, cong.BuzzNumber))
-	a.app.Post("/run", fizzBuzzHandler.GetStringArr)
+func (a *App) Run(conf Config) {
+	fizzBuzzHandler := handler.NewFizzBuzzHandler(service.NewFizzBuzzSolver(conf.FizzNumber, conf.BuzzNumber))
+	a.app.Post("/run", fizzBuzzHandler.Solve)
 
-	if err := a.app.Listen(cong.Address); err != nil {
+	if err := a.app.Listen(conf.Address); err != nil {
 		log.Fatal(err)
 	}
 }

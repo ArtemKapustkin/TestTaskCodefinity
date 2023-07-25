@@ -22,7 +22,7 @@ type RequestBody struct {
 	N int `json:"n"`
 }
 
-func (h *FizzBuzzHandler) GetStringArr(c *fiber.Ctx) error {
+func (h *FizzBuzzHandler) Solve(c *fiber.Ctx) error {
 	var requestBody RequestBody
 	if err := c.BodyParser(&requestBody); err != nil {
 		return c.SendStatus(fiber.StatusBadRequest)
